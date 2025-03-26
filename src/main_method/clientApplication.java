@@ -1,11 +1,15 @@
 package main_method;
 import java.util.*;
 
+import Product_model.productModel;
+
 public class clientApplication {
 
 	public static void main(String[] args) {
 	
 		List al=new ArrayList();
+		  productModel p=new productModel();
+		
 		
 		do{
 			Scanner sc=new Scanner(System.in);
@@ -28,10 +32,32 @@ public class clientApplication {
 				   int ch=sc.nextInt();
 				   switch(ch) {
 				   case 1:
+					 
+					   System.out.println("Eneter a id");
+					   int id =sc.nextInt();
+					   System.out.println("Eneter a price");
+					   int price =sc.nextInt();
+					   System.out.println("Eneter a qty");
+					   int qty =sc.nextInt();
+					  sc.nextLine();
+					  System.out.println("Eneter a name");
+					  String name=sc.nextLine();
+					  p.setId(id);
+					  p.setPrice(price);
+					  p.setQty(qty);
+					  p.setName(name);
+					 
+					 
+					 
+					  break;
+				   case 2:
+					   System.out.println("view all product in collection");
+					   System.out.println(p.getId()+" "+p.getName()+" "+p.getQty()+" "+p.getName());
 					   
 					   break;
+				   case 3:
+					   break;
 					   
-				   
 				   
 				   }
 				   

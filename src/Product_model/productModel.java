@@ -6,6 +6,7 @@ public class productModel {
 	private int price;
 	private int qty;
 	private String name;
+	
 	public int getId() {
 		return id;
 	}

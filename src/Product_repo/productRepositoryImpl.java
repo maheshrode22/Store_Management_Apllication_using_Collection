@@ -1,4 +1,4 @@
-package Customer_repo;
+package Product_repo;
 
 public class productRepositoryImpl implements productRepository {
 
