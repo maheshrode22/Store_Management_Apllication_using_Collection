@@ -4,23 +4,28 @@ import java.util.*;
 import java.util.List;
 
 import Product_model.productModel;
+import Product_repo.productRepositoryImpl;
 
 public class productServiceImpl implements productService {
-	productModel product;
+	productRepositoryImpl productRepo = new productRepositoryImpl();
+
+	
 	
 	@Override
 	public boolean isAddNewProduct(productModel model) {
-		List al=new ArrayList();
-		al.add(model);
-		return true;
+		
+		
+		return productRepo.isaddProduct(model);
 		
 	
 	}
 
+	
+
 	@Override
-	public List getAllProducts() {
+	public List getProducts() {
 		// TODO Auto-generated method stub
-		return null;
+		return productRepo.getProduct();
 	}
 	
 

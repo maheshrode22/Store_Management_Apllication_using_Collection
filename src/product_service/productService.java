@@ -5,12 +5,14 @@ import java.util.*;
 import Product_model.productModel;
 
 public interface productService {
+	
+	
 
 	boolean isAddNewProduct(productModel model);
-	List getAllProducts();
-	
+	List getProducts();
 	
 	
 
+	
 	
 }

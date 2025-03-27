@@ -2,14 +2,17 @@ package main_method;
 import java.util.*;
 
 import Product_model.productModel;
+import product_service.productServiceImpl;
 
 public class clientApplication {
-
+	
+	
 	public static void main(String[] args) {
 	
-		List al=new ArrayList();
-		  productModel p=new productModel();
-		
+		 productServiceImpl ps= new productServiceImpl();
+		 List al=ps.getProducts();
+		 
+
 		
 		do{
 			Scanner sc=new Scanner(System.in);
@@ -32,7 +35,7 @@ public class clientApplication {
 				   int ch=sc.nextInt();
 				   switch(ch) {
 				   case 1:
-					 
+					   productModel pm=new productModel();
 					   System.out.println("Eneter a id");
 					   int id =sc.nextInt();
 					   System.out.println("Eneter a price");
@@ -42,17 +45,23 @@ public class clientApplication {
 					  sc.nextLine();
 					  System.out.println("Eneter a name");
 					  String name=sc.nextLine();
-					  p.setId(id);
-					  p.setPrice(price);
-					  p.setQty(qty);
-					  p.setName(name);
-					 
+					  pm.setId(id);
+					  pm.setPrice(price);
+					  pm.setQty(qty);
+					  pm.setName(name);
+					 ps.isAddNewProduct(pm);
 					 
 					 
 					  break;
 				   case 2:
+					  
 					   System.out.println("view all product in collection");
-					   System.out.println(p.getId()+" "+p.getName()+" "+p.getQty()+" "+p.getName());
+					  
+					  for(Object obj:al)
+					  {
+						  productModel pp=(productModel)obj;
+						  System.out.println(pp.getId()+"\t"+pp.getName()+" "+pp.getPrice()+"\t"+pp.getQty());
+					  }
 					   
 					   break;
 				   case 3:
