@@ -7,6 +7,21 @@ public class productModel {
 	private int qty;
 	private String name;
 	
+	
+	public productModel(int id, int price, int qty, String name) {
+		super();
+		this.id = id;
+		this.price = price;
+		this.qty = qty;
+		this.name = name;
+	}
+	
+	
+	public productModel() {
+		
+	}
+
+
 	public int getId() {
 		return id;
 	}

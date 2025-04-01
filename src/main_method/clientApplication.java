@@ -1,16 +1,23 @@
 package main_method;
+import java.nio.channels.Pipe.SourceChannel;
 import java.util.*;
-
+import Product_model.customerModel;
 import Product_model.productModel;
+import product_service.customerServiceImpl;
+import product_service.productService;
 import product_service.productServiceImpl;
 
 public class clientApplication {
 	
-	
+	static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
 	
 		 productServiceImpl ps= new productServiceImpl();
-		 List al=ps.getProducts();
+		 customerServiceImpl cs=new customerServiceImpl();
+		 
+		
+		List al= new ArrayList();
+		
 		 
 
 		
@@ -30,45 +37,107 @@ public class clientApplication {
 					+ "9 View all customer reports\r\n"
 					+ "10 Delete customer and its order \r\n"
 					+ "11 Update customer orders \r\n"
-					+ "");
+					+ "12 exit");
 				   System.out.println("Enter a choice number");
 				   int ch=sc.nextInt();
 				   switch(ch) {
+				   
 				   case 1:
-					   productModel pm=new productModel();
-					   System.out.println("Eneter a id");
-					   int id =sc.nextInt();
-					   System.out.println("Eneter a price");
-					   int price =sc.nextInt();
-					   System.out.println("Eneter a qty");
-					   int qty =sc.nextInt();
-					  sc.nextLine();
-					  System.out.println("Eneter a name");
-					  String name=sc.nextLine();
-					  pm.setId(id);
-					  pm.setPrice(price);
-					  pm.setQty(qty);
-					  pm.setName(name);
-					 ps.isAddNewProduct(pm);
-					 
-					 
-					  break;
-				   case 2:
-					  
-					   System.out.println("view all product in collection");
-					  
-					  for(Object obj:al)
+					   System.out.print("Eneter a id :\t");
+					   int id=sc.nextInt();
+					   System.out.print("Eneter a price :\t");
+					   int price=sc.nextInt();
+					   System.out.print("Eneter a qty :\t");
+					   int qty=sc.nextInt();
+					   sc.nextLine();
+					   System.out.print("Eneter a name:\t");
+					   String name=sc.nextLine();
+					   productModel model =new  productModel(id,price,qty,name);
+					   
+					   boolean b=ps.isAddNewProduct(model);
+					   
+					  if(b) {
+						  System.out.println("product is added");
+					  }else
 					  {
-						  productModel pp=(productModel)obj;
-						  System.out.println(pp.getId()+"\t"+pp.getName()+" "+pp.getPrice()+"\t"+pp.getQty());
+						  System.out.println("not added");
 					  }
+					  break;
+				   case 2: 
+					   System.out.println("############# All products #################");
+					  List list=ps.getAllProduct();
+					  for(Object obj :list) 
+					  {
+						productModel pmodel=(productModel)obj;
+						System.out.println(pmodel.getId()+"\t"+pmodel.getName()+"\t"+pmodel.getPrice()+"\t"+pmodel.getQty());
+						
+					  }
+					  System.out.println("###########################################");
 					   
 					   break;
 				   case 3:
+					   sc.nextLine();
+					   System.out.println("search a product using  name :");
+					    name=sc.nextLine();
+					   productModel pm=ps.getProductByName(name);
+					   if(pm!=null)
+					   {
+						   System.out.println(pm.getId()+"\t"+pm.getName()+"\t"+pm.getPrice()+"\t"+pm.getQty());
+					   }else
+					   {
+						   System.out.println("data not found ");
+					   }
+					   break;
+				   case 4:
+					   
+					   sc.nextLine(); 
+					   
+					    System.out.println("Enter the product name to delete: ");
+					     name = sc.nextLine();
+					    
+					    boolean isDeleted = ps.isdeleteProduct(name);
+					    
+					    if (isDeleted) {
+					        System.out.println("Product deleted successfully.");
+					    } else {
+					        System.out.println("Product not found.");
+					    }
+					    break;
+				   case 5:
+					   
+					   System.out.println("All product Count is : "+ps.getCountAllProduct());
+					   
+				   break;
+				   case 6:
+					   	System.out.println("Enter customer id: ");
+					   	int cid=sc.nextInt();
+					   	System.out.println("Eneter a customer name:");
+					   	sc.nextLine();
+					   	String cname=sc.nextLine();
+					   	System.out.println("Eneter contact: ");
+					
+					   	int cphon=sc.nextInt();
+					   	customerModel cmodel=new customerModel(cid,cname,cphon);
+					   	
+					     b=cs.isAddNewCustomer(cmodel);
+					     if(b)
+					     {
+					    	 System.out.println("added customer ");
+					     }else
+					     {
+					    	 System.out.println("not added customer");
+					     }
+					   	
+					   	
+					   	
 					   break;
 					   
-				   
+					   
+				   case 12:
+					   System.exit(ch);
+					   break;
 				   }
+				 
 				   
 		}while(true);
 		
@@ -78,5 +147,5 @@ public class clientApplication {
 		
 		
 	}
-
+	
 }

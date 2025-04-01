@@ -7,7 +7,11 @@ public interface productRepository {
 
 
 	boolean isaddProduct(productModel product);
-	List getProduct();
 	
+	public List getAllProduct();
+	public productModel getProductByName(String name);
+	boolean isdeleteProduct(String name);
+	
+	public int getCountAllProduct();	
 	
 }

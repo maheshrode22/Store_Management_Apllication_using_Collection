@@ -9,8 +9,12 @@ public interface productService {
 	
 
 	boolean isAddNewProduct(productModel model);
-	List getProducts();
+	public List getAllProduct();
+	public productModel getProductByName(String name);
+	boolean isdeleteProduct(String name);
+	public int getCountAllProduct();
 	
+
 	
 
 	
