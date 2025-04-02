@@ -38,6 +38,7 @@ public class clientApplication {
 					+ "10 Delete customer and its order \r\n"
 					+ "11 Update customer orders \r\n"
 					+ "12 exit");
+			
 				   System.out.println("Enter a choice number");
 				   int ch=sc.nextInt();
 				   switch(ch) {
@@ -80,6 +81,7 @@ public class clientApplication {
 					   System.out.println("search a product using  name :");
 					    name=sc.nextLine();
 					   productModel pm=ps.getProductByName(name);
+					   
 					   if(pm!=null)
 					   {
 						   System.out.println(pm.getId()+"\t"+pm.getName()+"\t"+pm.getPrice()+"\t"+pm.getQty());
@@ -87,6 +89,7 @@ public class clientApplication {
 					   {
 						   System.out.println("data not found ");
 					   }
+					   
 					   break;
 				   case 4:
 					   
@@ -118,7 +121,7 @@ public class clientApplication {
 					
 					   	int cphon=sc.nextInt();
 					   	customerModel cmodel=new customerModel(cid,cname,cphon);
-					   	
+					 
 					     b=cs.isAddNewCustomer(cmodel);
 					     if(b)
 					     {
@@ -128,17 +131,17 @@ public class clientApplication {
 					    	 System.out.println("not added customer");
 					     }
 					   	
-					   	
-					   	
 					   break;
+				   case 7:
+					   break;
+					   
 					   
 					   
 				   case 12:
 					   System.exit(ch);
 					   break;
 				   }
-				 
-				   
+
 		}while(true);
 		
 		
