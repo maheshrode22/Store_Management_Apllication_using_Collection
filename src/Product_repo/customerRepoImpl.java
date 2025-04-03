@@ -10,8 +10,13 @@ public class customerRepoImpl implements customerRepo{
 	public static  List customerList=new ArrayList();
 	@Override
 	public boolean isAddNewCustomer(customerModel cmodel) {
-		// TODO Auto-generated method stub
+		
 		return customerList.add(cmodel);
+	}
+	@Override
+	public List getAllCustomer() {
+		// TODO Auto-generated method stub
+		return customerList;
 	}
 
 }

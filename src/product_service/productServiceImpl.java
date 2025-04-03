@@ -15,7 +15,7 @@ public class productServiceImpl implements productService {
 	
 	@Override
 	public boolean isAddNewProduct(productModel model) {
-		if(model.getQty()>0)
+		if(model.getStock()>0)
 		{
 			return productRepo.isaddProduct(model);
 		}else {
